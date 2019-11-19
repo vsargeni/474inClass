@@ -20,10 +20,10 @@ export class TopicsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public afs: AngularFirestore) { }
 
-  public viewTopics: Array<Topic>;
+  //public viewTopics: Array<Topic>;
 
   ngOnInit() {
-    this.getTopics();
+    //this.getTopics();
   }
 
   async getTopics() {
@@ -34,11 +34,7 @@ export class TopicsComponent implements OnInit {
 
     snap.forEach(function (val) {
       document.querySelector('#subs').innerHTML+=`<a href=${val.id}> ${val.id}</a><br>`;
-      // topics.push(val.id);
-      // console.log(val);
     });
-
-    console.log(this.viewTopics);
     return topics;
   }
 }

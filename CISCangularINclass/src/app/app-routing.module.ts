@@ -8,7 +8,6 @@ import { TopicsComponent } from './topics/topics.component';
 const routes: Routes = [
   {path:"", redirectTo: 'home', pathMatch:"full"},
   {path:'home', component:HomeComponent},
-  {path: 'about', component:MenuComponent},
   {path: 'topics', component:TopicsComponent}
 ];
 
