@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import {
   AngularFirestore,
   AngularFirestoreModule,
@@ -17,24 +18,27 @@ import { Topic } from './topic.model';
 })
 
 export class TopicsComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute, public afs: AngularFirestore) { }
+  //itemsRef: AngularFireList<any>;
+  constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
 
   //public viewTopics: Array<Topic>;
 
   ngOnInit() {
-    //this.getTopics();
+    this.getTopics();
   }
+
 
   async getTopics() {
     // const firestore = firebase.firestore();
     const topics = [];
 
-    const snap = await this.afs.collection('subreddits').get();
+    // const snap = await this.db.collection('subreddits').doc('posts')
+    const snap = await this.db.collection('subreddits').doc('posts')
+    //const x = await this.afs.doc
 
-    snap.forEach(function (val) {
-      document.querySelector('#subs').innerHTML+=`<a href=${val.id}> ${val.id}</a><br>`;
-    });
+    // snap.forEach(function (val) {
+    //   document.querySelector('#subs').innerHTML+=`<a href=${val}> ${val}</a><br>`;
+    // });
     return topics;
   }
 }
