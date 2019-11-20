@@ -16,7 +16,6 @@ import { Topic } from './topic.model';
   templateUrl: './topics.component.html',
   styleUrls: ['./topics.component.css']
 })
-
 export class TopicsComponent implements OnInit {
   // itemsRef: AngularFireList<any>;
   constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
@@ -28,9 +27,9 @@ export class TopicsComponent implements OnInit {
   }
 
 
-  getTopics() {
+ async getTopics() {
     try {
-      this.db.collection('root').doc('subredddits').get().toPromise()
+      await this.db.collection('root').doc('subredddits').get().toPromise()
         .then(doc => {
           if (!doc.exists ) {
             console.log('No document found');
@@ -44,4 +43,35 @@ export class TopicsComponent implements OnInit {
     }
   }
 
+  /* async getTopics() {
+    // const firestore = firebase.firestore();
+    const topics = [];
+    try {
+      // const snap = await this.db.collection("subreddits").get();
+      const snap = this.db.collection('root').doc('subreddits');
+      const getDoc = snap
+        .get().toPromise()
+        .then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+            console.log('Document data:', doc.data());
+          }
+        })
+        .catch(err => {
+          console.log('Error getting document', err);
+        });
+
+      // const x = await this.afs.doc
+
+      // snap.forEach(function(val) {
+      document.querySelector(
+           '#subs'
+         ).innerHTML += `<a href=${getDoc}> ${getDoc}</a><br>`;
+      // });
+    } catch (e) {
+      console.log(e);
+    }
+    return topics;
+  } */
 }
