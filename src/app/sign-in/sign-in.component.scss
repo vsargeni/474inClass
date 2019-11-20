@@ -1,4 +1,21 @@
-.displayTableCell {
-    background: url('https://papers.co/wallpaper/papers.co-vd76-noir-by-boris-p-borisov-dark-pattern-art-36-3840x2400-4k-wallpaper.jpg');
-    padding-top: 50px;
+body {
+    background: #222222;
+    padding: 50px;
+    opacity: 0.7;
+    margin-top: 50px;
+    width: 100%;
+    
 }
+
+* {
+    color: white;
+}
+
+.displayTable {
+    margin-top: 20px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+  }
