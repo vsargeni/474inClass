@@ -18,13 +18,17 @@ import { environment } from 'src/environments/environment';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { TopicsComponent } from './topics/topics.component';
+import { SignUpComponent } from './sign-up/sign-up.component'
+import { SignInComponent } from './sign-in/sign-in.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     HomeComponent,
-    TopicsComponent
+    TopicsComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
