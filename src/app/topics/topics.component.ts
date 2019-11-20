@@ -18,28 +18,30 @@ import { Topic } from './topic.model';
 })
 
 export class TopicsComponent implements OnInit {
-  //itemsRef: AngularFireList<any>;
+  // itemsRef: AngularFireList<any>;
   constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
 
-  //public viewTopics: Array<Topic>;
+  // public viewTopics: Array<Topic>;
 
   ngOnInit() {
     this.getTopics();
   }
 
 
-  async getTopics() {
-    // const firestore = firebase.firestore();
-    const topics = [];
-
-    // const snap = await this.db.collection('subreddits').doc('posts')
-    const snap = await this.db.collection('subreddits').doc('posts')
-    //const x = await this.afs.doc
-
-    // snap.forEach(function (val) {
-    //   document.querySelector('#subs').innerHTML+=`<a href=${val}> ${val}</a><br>`;
-    // });
-    return topics;
+  getTopics() {
+    try {
+      this.db.collection('root').doc('subredddits').get().toPromise()
+        .then(doc => {
+          if (!doc.exists ) {
+            console.log('No document found');
+          } else {
+            document.querySelector('#subs').innerHTML += `<br><a href=${doc}>r/${doc}</a></br>`;
+            console.log(doc.id);
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }
-}
 
+}
