@@ -6,5 +6,8 @@
         <li class="nav-item">
             <a [routerLinkActive]='activeClass' class="nav-link" routerLink='topics'>Topics</a>
         </li>
+        <li class="nav-item">
+             <button type="button" class="btn googleBtn" (click)="authService.SignOut()">Sign Out</button>
+            
+        </li>
     </ul>
-</nav>
