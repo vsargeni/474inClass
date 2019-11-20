@@ -36,10 +36,6 @@ import { TopicsComponent } from './topics/topics.component';
   ],
   providers: [
   ],
-  bootstrap: [
-    AppComponent,
-    MenuComponent,
-    HomeComponent
-  ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,3 +1,3 @@
 export interface Topic {
-    subreddit: string;
+    id: string;
 }

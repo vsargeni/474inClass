@@ -5,9 +5,9 @@ import { TopicsComponent } from './topics/topics.component';
 
 
 const routes: Routes = [
-  {path:"", redirectTo: 'home', pathMatch:"full"},
-  {path:'home', component:HomeComponent},
-  {path: 'topics', component:TopicsComponent}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'topics', component: TopicsComponent}
 ];
 
 @NgModule({
