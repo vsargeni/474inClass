@@ -34,7 +34,7 @@ export class TopicsComponent implements OnInit {
             console.log('No documents found');
           } else {
             coll.forEach(doc => {
-              document.querySelector('#subreddits').innerHTML += `<br><a href=${doc.id}>r/${doc.id}</a></br>`;
+              document.querySelector('#subreddits').innerHTML += `<br><h4><a href=${doc.id}>r/${doc.id}</a></h4></br>`;
               console.log(doc.id);
             });
           }
