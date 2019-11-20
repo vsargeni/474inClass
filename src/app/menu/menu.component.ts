@@ -11,7 +11,7 @@ export class MenuComponent implements OnInit {
 
   @Input() activeClass = 'active';
 
-  constructor( public authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

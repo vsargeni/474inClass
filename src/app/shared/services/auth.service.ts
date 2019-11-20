@@ -62,19 +62,19 @@ export class AuthService {
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
     return this.afAuth.auth.currentUser.sendEmailVerification()
-    .then(() => {
-      this.router.navigate(['verify-email-address']);
-    });
+      .then(() => {
+        this.router.navigate(['verify-email-address']);
+      });
   }
 
   // Reset Forggot password
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-    }).catch((error) => {
-      window.alert(error);
-    });
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        window.alert(error);
+      });
   }
 
   // Returns true when user is looged in and email is verified
@@ -91,14 +91,14 @@ export class AuthService {
   // Auth logic to run auth providers
   AuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
-    .then((result) => {
-       this.ngZone.run(() => {
+      .then((result) => {
+        this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
-       this.SetUserData(result.user);
-    }).catch((error) => {
-      window.alert(error);
-    });
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error);
+      });
   }
 
   /* Setting up user data when sign in with username/password,

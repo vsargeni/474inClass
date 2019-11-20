@@ -26,7 +26,7 @@ export class TopicsComponent implements OnInit {
   }
 
 
- async getTopics() {
+  async getTopics() {
     try {
       await this.db.collection('subreddits').get().toPromise()
         .then(coll => {
@@ -45,10 +45,10 @@ export class TopicsComponent implements OnInit {
   }
 
   async makeTopics() {
-    try{
-      
+    try {
+
     }
-    catch (err){
+    catch (err) {
       console.log(err);
     }
   }

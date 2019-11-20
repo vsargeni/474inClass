@@ -44,6 +44,6 @@ import { PostsComponent } from './posts/posts.component';
   ],
   providers: [
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

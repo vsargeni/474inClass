@@ -12,13 +12,13 @@ import { PostsComponent } from './posts/posts.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'signin', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'topics', component: TopicsComponent, canActivate: [AuthGuard] },
-  {path: 'topics/posts', component: PostsComponent, canActivate: [AuthGuard] },
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  {path: 'signup', component: SignUpComponent},
-  {path: 'signin', component: SignInComponent},
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'topics', component: TopicsComponent, canActivate: [AuthGuard] },
+  { path: 'topics/posts', component: PostsComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SignInComponent },
 ];
 
 @NgModule({
