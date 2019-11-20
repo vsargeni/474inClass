@@ -21,6 +21,7 @@ import { TopicsComponent } from './topics/topics.component';
 import { SignUpComponent } from './sign-up/sign-up.component'
 import { SignInComponent } from './sign-in/sign-in.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TopicsComponent,
     SignUpComponent,
     SignInComponent,
-    DashboardComponent
+    DashboardComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(public authService: AuthService,
-    public router: Router,
-    public ngZone: NgZone) { }
+              public router: Router,
+              public ngZone: NgZone) { }
 
   ngOnInit() {
   }
