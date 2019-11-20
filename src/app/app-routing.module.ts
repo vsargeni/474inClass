@@ -5,13 +5,18 @@ import { TopicsComponent } from './topics/topics.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
+import { AuthGuard } from './shared/guard/auth-guard';
+import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
-  {path: 'topics', component: TopicsComponent},
+  {path: '', redirectTo: 'signin', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'topics', component: TopicsComponent, canActivate: [AuthGuard] },
   {path: 'signup', component: SignUpComponent},
-  {path: 'signin', component: SignInComponent}
+  {path: 'signin', component: SignInComponent},
+  {path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard] }
 ];
 
 @NgModule({
