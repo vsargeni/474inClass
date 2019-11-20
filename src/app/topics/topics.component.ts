@@ -43,4 +43,13 @@ export class TopicsComponent implements OnInit {
       console.log(err);
     }
   }
+
+  async makeTopics() {
+    try{
+      
+    }
+    catch (err){
+      console.log(err);
+    }
+  }
 }
