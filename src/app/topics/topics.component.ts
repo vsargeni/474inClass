@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import * as $ from 'jquery';
 import {
   AngularFirestore,
   AngularFirestoreModule,
@@ -15,6 +16,8 @@ import {
   templateUrl: './topics.component.html',
   styleUrls: ['./topics.component.css']
 })
+
+
 export class TopicsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
@@ -24,7 +27,23 @@ export class TopicsComponent implements OnInit {
   ngOnInit() {
     this.getTopics();
   }
+  onSubmit() {
+    var t = this;
+    var subreddit = $("#subreddit").val();
+    alert(subreddit);
+    this.db.collection("subreddits").doc(subreddit).set({
+   
+    })
+      .then(function () {
+        console.log("Document successfully written!");
+        document.location.reload(true);
+      })
+      .catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
+  }
 
+  
 
   async getTopics() {
     try {
@@ -34,7 +53,7 @@ export class TopicsComponent implements OnInit {
             console.log('No documents found');
           } else {
             coll.forEach(doc => {
-              document.querySelector('#subreddits').innerHTML += `<br><h4><a href=${doc.id}>r/${doc.id}</a></h4></br>`;
+              document.querySelector('#subreddits').innerHTML += `<br><h4><a href=/posts/${doc.id}>r/${doc.id}</a></h4></br>`;
               console.log(doc.id);
             });
           }

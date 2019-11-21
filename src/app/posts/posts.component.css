@@ -1,0 +1,24 @@
+#subreddits {
+    height: 100px;
+}
+
+* {
+    color: white;
+}
+
+#title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100vw;
+    color: white;
+    font-size: 50px;
+    margin-bottom: 75px;
+}
+
+.subposts {
+    /* color: magenta;
+    border: 2px solid red; border-radius: 5px; */
+    padding: 10px;
+    
+}

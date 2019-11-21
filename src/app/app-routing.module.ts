@@ -9,16 +9,18 @@ import { AuthGuard } from './shared/guard/auth-guard';
 import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostsComponent } from './posts/posts.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'topics', component: TopicsComponent, canActivate: [AuthGuard] },
-  { path: 'topics/posts', component: PostsComponent, canActivate: [AuthGuard] },
+  { path: 'posts/:id', component: PostsComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
+  { path: 'comments/:id/:id2', component: CommentsComponent },
 ];
 
 @NgModule({
