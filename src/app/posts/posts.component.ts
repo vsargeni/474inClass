@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../../environments/environment';
 import * as $ from 'jquery';
+import { AuthService } from '../shared/services/auth.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -11,28 +12,32 @@ import * as $ from 'jquery';
 export class PostsComponent implements OnInit {
 
   public subname: any;
+  public authService: AuthService;
 
   constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
 
   ngOnInit() {
     this.getTopics();
-    
+
   }
 
   onSubmit() {
   
-    var subreddit = $("#subreddit").val();
+    var posttitle= $("#posttitle").val();
+    var posttext= $("#posttext").val();
     
     let id = this.route.snapshot.paramMap.get('id');
+   
 
-    this.db.collection("subreddits").doc(id).collection("posts").doc(subreddit).set({
-      author: "korey",
-      text: "hello",
-      title : subreddit
+
+    this.db.collection("subreddits").doc(id).collection("posts").doc(posttitle).set({
+      author: JSON.parse(localStorage.getItem('user')).displayName,
+      text: posttext,
+      title : posttitle
     })
       .then(function () {
         console.log("Document successfully written!");
-        // document.location.reload(true);
+        document.location.reload(true);
       })
       .catch(function (error) {
         console.error("Error writing document: ", error);

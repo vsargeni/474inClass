@@ -24,7 +24,7 @@ export class CommentsComponent implements OnInit {
       let id2 = this.route.snapshot.paramMap.get('id2');
       this.postid = id;
       this.subname = id2;
-      alert("id: " + id + " --- id2: " + id2);
+      // alert("id: " + id + " --- id2: " + id2);
       // alert(id2);
       // var res = url.split('/')
       // var last = res[res.length-1]
