@@ -16,19 +16,23 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.getTopics();
+    
   }
 
   onSubmit() {
   
     var subreddit = $("#subreddit").val();
-    alert(subreddit);
+    
     let id = this.route.snapshot.paramMap.get('id');
-    this.db.collection("subreddits").doc(id).collection("posts").doc().set({
-   
+
+    this.db.collection("subreddits").doc(id).collection("posts").doc(subreddit).set({
+      author: "korey",
+      text: "hello",
+      title : subreddit
     })
       .then(function () {
         console.log("Document successfully written!");
-        document.location.reload(true);
+        // document.location.reload(true);
       })
       .catch(function (error) {
         console.error("Error writing document: ", error);
