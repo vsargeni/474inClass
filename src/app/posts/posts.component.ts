@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../../environments/environment';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -15,6 +16,23 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.getTopics();
+  }
+
+  onSubmit() {
+  
+    var subreddit = $("#subreddit").val();
+    alert(subreddit);
+    let id = this.route.snapshot.paramMap.get('id');
+    this.db.collection("subreddits").doc(id).collection("posts").doc().set({
+   
+    })
+      .then(function () {
+        console.log("Document successfully written!");
+        document.location.reload(true);
+      })
+      .catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
   }
 
   async getTopics() {

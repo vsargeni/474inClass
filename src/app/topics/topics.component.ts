@@ -28,7 +28,7 @@ export class TopicsComponent implements OnInit {
     this.getTopics();
   }
   onSubmit() {
-    var t = this;
+  
     var subreddit = $("#subreddit").val();
     alert(subreddit);
     this.db.collection("subreddits").doc(subreddit).set({
