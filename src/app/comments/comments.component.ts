@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-comments',
@@ -16,6 +17,28 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.getComments();
+  }
+
+  onSubmit() {
+  
+    var commentText= $("#commentText").val();
+    
+    let id = this.route.snapshot.paramMap.get('id');
+    let id2 = this.route.snapshot.paramMap.get('id2');
+   
+
+
+    this.db.collection('subreddits').doc(id2).collection('posts').doc(id).collection("comments").doc(commentText).set({
+      author: JSON.parse(localStorage.getItem('user')).displayName,
+      text: commentText,
+    })
+      .then(function () {
+        console.log("Document successfully written!");
+        // document.location.reload(true);
+      })
+      .catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
   }
 
   async getComments() {
