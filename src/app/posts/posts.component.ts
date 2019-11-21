@@ -22,7 +22,7 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.subid = params.get('id');
+      this.subid = params.get('subid');
     });
     this.getPosts(this.subid);
   }

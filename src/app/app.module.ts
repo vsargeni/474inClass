@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopicsComponent } from './topics/topics.component';
 import { PostsComponent } from './posts/posts.component';
+import { CommentsComponent } from './comments/comments.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
@@ -30,6 +31,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     DashboardComponent,
     TopicsComponent,
     PostsComponent,
+    CommentsComponent,
     SignUpComponent,
     SignInComponent
   ],
