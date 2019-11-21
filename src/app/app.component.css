@@ -25,7 +25,7 @@ p {
 }
 
 .toolbar {
-    height: 60px;
+    height: 75px;
     margin: -8px;
     display: flex;
     align-items: center;
@@ -148,8 +148,9 @@ svg#rocket-smoke {
 a,
 a:visited,
 a:hover {
-    color: #1976d2;
+    color: #0b0c0c;
     text-decoration: none;
+
 }
 
 a:hover {

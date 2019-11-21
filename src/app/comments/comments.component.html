@@ -1,7 +1,15 @@
-<div id=title></div>
-<div id=author></div>
-<div id=image></div>
-<div id=link></div>
-<div id=text></div>
+<div id="title"></div>
+<div id="author"></div>
+<div id="image"></div>
+<div id="link"></div>
+<div id="text"></div>
 <b>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________</b>
-<div id=comments><h2>Comments: </h2></div>
+<p id="title" >Comments for post</p>
+
+<div class="form-group">
+    <label style="color: white;" for="commentText">Post Comment</label>
+    <input type="text" class="form-control" id="commentText" aria-describedby="emailHelp" placeholder="Get Creative">
+    <button (click)="onSubmit()" style="margin-top: 5px;" type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+<div id="comments"><h2>Comments: </h2></div>

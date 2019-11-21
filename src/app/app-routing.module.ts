@@ -11,9 +11,9 @@ import { AuthGuard } from './shared/guard/auth-guard';
 import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
+
   { path: 'topics/list', component: TopicsComponent, canActivate: [AuthGuard] },
   { path: 'topics/:subid/posts', component: PostsComponent, canActivate: [AuthGuard] },
   { path: 'topics/:subid/posts/:postid', component: CommentsComponent, canActivate: [AuthGuard] },

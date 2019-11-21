@@ -1,23 +1,19 @@
+* {
+    color: #ffffff;
+}
+
 #title {
-    color: #ffffff;
-}
-
-#author {
-    color: #ffffff;
-}
-
-#image {
-    color: #ffffff;
-}
-
-#link {
-    color: #ffffff;
-}
-
-#text {
-    color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50vw;
+    color: white;
+    font-size: 50px;
+    margin-bottom: 75px;
 }
 
 #comments {
-    color: #ffffff;
+    /* color: magenta;
+    border: 2px solid red; border-radius: 5px; */
+    padding: 10px;
 }
