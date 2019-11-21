@@ -1,0 +1,12 @@
+h1 {
+    color: #ffffff;
+}
+
+.subtitle {
+    display: flex;
+}
+
+.subtitle h1 {
+    margin-right: 10px;
+    display: block;
+}

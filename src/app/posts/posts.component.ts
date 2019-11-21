@@ -34,10 +34,11 @@ export class PostsComponent implements OnInit {
           if (coll.empty) {
             console.log('No documents found');
           } else {
-            document.querySelector('#subTitle').innerHTML += `<h1>r/${subid}</h1>`;
+            document.querySelector('#subid').innerHTML = `r/${subid}`;
             coll.forEach(doc => {
+              const postName = doc.get('title');
               document.querySelector('#posts').innerHTML +=
-                `<br><h4><a [routerLinkActive]='activeClass' routerLink='topics/${subid}/posts/${doc.id}'>${doc.id}</a></h4></br>`;
+                `<br><a href='topics/${subid}/posts/${doc.id}'><h4>${postName}</h4></a></br>`;
               console.log(doc.id);
             });
           }
