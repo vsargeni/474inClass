@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { TopicsComponent } from './topics/topics.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -13,12 +12,12 @@ import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'topics', component: TopicsComponent, canActivate: [AuthGuard] },
-  { path: 'topics/posts', component: PostsComponent, canActivate: [AuthGuard] },
+  { path: 'topics/list', component: TopicsComponent, canActivate: [AuthGuard] },
+  { path: 'topics/:id/posts', component: PostsComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
+  { path: '**', component: SignInComponent },
 ];
 
 @NgModule({

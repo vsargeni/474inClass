@@ -31,6 +31,10 @@ h6 {
   font-weight: 600;
 }
 
+.toolbar {
+  height: 69px !important;
+}
+
 .media-body h1 {
   font-weight: 300;
   margin-bottom: 20px;
@@ -280,7 +284,6 @@ input:-moz-placeholder {
 
 .nav-link {
   padding: 1.5rem 1rem;
-  border-bottom: 1px solid #dde0e2;
   cursor: pointer;
 }
 

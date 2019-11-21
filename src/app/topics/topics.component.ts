@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
@@ -17,14 +18,15 @@ import {
 })
 export class TopicsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
-
-  // public viewTopics: Array<Topic>;
+  constructor(private route: ActivatedRoute, private router: Router, public db: AngularFirestore) { }
 
   ngOnInit() {
     this.getTopics();
   }
 
+  nav(subid: string) {
+    this.router.navigateByUrl(`/topics/${subid}/posts`);
+  }
 
   async getTopics() {
     try {
@@ -34,7 +36,11 @@ export class TopicsComponent implements OnInit {
             console.log('No documents found');
           } else {
             coll.forEach(doc => {
-              document.querySelector('#subreddits').innerHTML += `<br><h4><a href=${doc.id}>r/${doc.id}</a></h4></br>`;
+              document.querySelector('#subreddits').innerHTML +=
+                // Commented link should work absolutely fine, but doesn't for some reason
+                // tslint:disable-next-line: max-line-length
+                // `<br><a style='color:#005ccc;cursor:pointer;text-decoration:underline' [routerLinkActive]='activeClass' class='nav-link' [routerLink]="['topics','${doc.id}','posts']"><h4>r/${doc.id}</h4></a></br>`;
+                `<br><a href='topics/${doc.id}/posts'><h4>r/${doc.id}</h4></a></br>`;
               console.log(doc.id);
             });
           }
@@ -47,8 +53,7 @@ export class TopicsComponent implements OnInit {
   async makeTopics() {
     try {
 
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
   }
