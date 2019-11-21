@@ -65,7 +65,7 @@ export class PostsComponent implements OnInit {
               let docid = doc.id.replace(/ +/g, "")
             
 
-              document.querySelector('#subreddits').innerHTML += `<div  style="border: 2px dashed white; border-radius: 5px;"> <br><h4 style="padding: 20px;"><a href=/comments/${docid}/${this.subname} style="font-size: 50px; position: relative; display: block; top: -30px;">${title.replace(/['"]+/g, '')}</a> <a style="font-size: 20px; display: block;">${text.replace(/['"]+/g, '')}</a> <a style="font-size: 10px; position: relative; bottom: -30px;display: block;">Listed by: ${author.replace(/['"]+/g, '')} </a></h4></br></div>`;
+              document.querySelector('#subreddits').innerHTML += `<div  style="border: 2px dashed white; border-radius: 5px;"> <br><h4 style="padding: 20px;"><a href=/comments/${docid}/${this.subname} style=" font-size: 50px; position: relative; display: block; top: -30px;">${title.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 20px; display: block;">${text.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 10px; position: relative; bottom: -30px;display: block;">Listed by: ${author.replace(/['"]+/g, '')} </a></h4></br></div>`;
               document.querySelector('#subreddits').setAttribute( 'class', 'subposts');
               console.log(doc.id);
             });

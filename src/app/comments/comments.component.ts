@@ -66,7 +66,7 @@ export class CommentsComponent implements OnInit {
               let author = JSON.stringify(doc.data().author);
               // let title = JSON.stringify(doc.data().title);
 
-              document.querySelector('#subreddits').innerHTML += `<div  style="border: 2px dashed white; border-radius: 5px;"> <br><h4 style="padding: 20px;"><a style="font-size: 20px; display: block;">${text.replace(/['"]+/g, '')}</a> <a style="font-size: 10px; position: relative; bottom: -30px;display: block;">Listed by: ${author.replace(/['"]+/g, '')} </a></h4></br></div>`;
+              document.querySelector('#subreddits').innerHTML += `<div  style=" color: inherit; background-color:transparent !important; border: 2px dashed white; border-radius: 5px;"> <br><h4 style="color: inherit; background-color:transparent !important; padding: 20px;"><a style=" color: inherit; background-color:transparent !important; font-size: 20px; display: block;">${text.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 10px; position: relative; bottom: -30px;display: block;">Listed by: ${author.replace(/['"]+/g, '')} </a></h4></br></div>`;
               document.querySelector('#subreddits').setAttribute( 'class', 'subposts');
               console.log(doc.data().text);
             });
