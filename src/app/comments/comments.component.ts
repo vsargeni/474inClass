@@ -34,7 +34,7 @@ export class CommentsComponent implements OnInit {
     })
       .then(function () {
         console.log("Document successfully written!");
-        // document.location.reload(true);
+        document.location.reload(true);
       })
       .catch(function (error) {
         console.error("Error writing document: ", error);

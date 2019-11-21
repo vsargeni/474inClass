@@ -30,7 +30,7 @@ export class TopicsComponent implements OnInit {
   onSubmit() {
   
     var subreddit = $("#subreddit").val();
-    alert(subreddit);
+
     this.db.collection("subreddits").doc(subreddit).set({
    
     })
