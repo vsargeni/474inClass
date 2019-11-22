@@ -1,9 +1,10 @@
-
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
+import * as $ from 'jquery';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AuthService } from '../shared/services/auth.service';
 import {
   AngularFirestore,
   AngularFirestoreModule,
@@ -18,80 +19,35 @@ import {
 })
 export class PostsComponent implements OnInit {
   @Input() subid: string;
+  public authService: AuthService;
 
-//abaldwin
-  constructor(private route: ActivatedRoute, public db: AngularFirestore) {  }
+  constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.subid = params.get('subid');
     });
     this.getPosts(this.subid);
-//=======
-  public subname: any;
-  public authService: AuthService;
-
-  constructor(private route: ActivatedRoute, public db: AngularFirestore) { }
-
-  ngOnInit() {
-    this.getTopics();
-
   }
+
 
   onSubmit() {
-  
-    var posttitle= $("#posttitle").val();
-    var posttext= $("#posttext").val();
-    
-    let id = this.route.snapshot.paramMap.get('id');
-   
+    const subid = this.route.snapshot.paramMap.get('subid');
+    const posttitle = $('#posttitle').val();
+    const posttext = $('#posttext').val();
 
-
-    this.db.collection("subreddits").doc(id).collection("posts").doc(posttitle).set({
+    this.db.collection('subreddits').doc(subid).collection('posts').doc(posttitle).set({
       author: JSON.parse(localStorage.getItem('user')).displayName,
+      title: posttitle,
       text: posttext,
-      title : posttitle
     })
-      .then(function () {
-        console.log("Document successfully written!");
-        document.location.reload(true);
+      .then(() => {
+        console.log('Post submitted!');
+        document.location.reload();
       })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
+      .catch(err => {
+        console.error(err);
       });
-  }
-
-  async getTopics() {
-    try {
-      let id = this.route.snapshot.paramMap.get('id');
-      this.subname = id;
-
-
-  
-
-      await this.db.collection('subreddits').doc(id).collection('posts').get().toPromise()
-        .then(coll => {
-          if (coll.empty) {
-            console.log('No documents found');
-          } else {
-            coll.forEach(doc => {
-              // alert(JSON.stringify(doc.data().text))
-              let text = JSON.stringify(doc.data().text);
-              let author = JSON.stringify(doc.data().author);
-              let title = JSON.stringify(doc.data().title);
-              let docid = doc.id.replace(/ +/g, "")
-            
-
-              document.querySelector('#subreddits').innerHTML += `<div  style="border: 2px dashed white; border-radius: 5px;"> <br><h4 style="padding: 20px;"><a href=/comments/${docid}/${this.subname} style=" font-size: 50px; position: relative; display: block; top: -30px;">${title.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 20px; display: block;">${text.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 10px; position: relative; bottom: -30px;display: block;">Listed by: ${author.replace(/['"]+/g, '')} </a></h4></br></div>`;
-              document.querySelector('#subreddits').setAttribute( 'class', 'subposts');
-              console.log(doc.id);
-            });
-          }
-        });
-    } catch (err) {
-      console.log(err);
-    }
-//master
   }
 
   async getPosts(subid: string) {
@@ -113,7 +69,42 @@ export class PostsComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
+  }n
+
+  /*
+  async getTopics() {
+    try {
+      this.subid = this.route.snapshot.paramMap.get('subid');
+
+      await this.db.collection('subreddits').doc(this.subid).collection('posts').get().toPromise()
+        .then(coll => {
+          if (coll.empty) {
+            console.log('No documents found');
+          } else {
+            coll.forEach(doc => {
+              
+              // const text = JSON.stringify(doc.data().text);
+              // const author = JSON.stringify(doc.data().author);
+              // const title = JSON.stringify(doc.data().title);
+              // const docid = doc.id.replace(/ +/g, '');
+              
+              document.querySelector('#subreddits').innerHTML += `<div  style="border: 2px dashed white; border-radius: 5px;">
+              <br><h4 style="padding: 20px;"><a href=/comments/${docid}/${this.subname} style=" font-size: 50px; position: relative; display: block; top: -30px;">
+              ${title.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 20px; display: block;">
+              ${text.replace(/['"]+/g, '')}</a> <a style=" color: inherit; background-color:transparent !important; font-size: 10px; position: relative; 
+              bottom: -30px;display: block;">
+              Listed by: ${author.replace(/['"]+/g, '')} </a></h4></br></div>`;
+              document.querySelector('#subreddits').setAttribute('class', 'subposts');
+              console.log(doc.id);
+            });
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }
+  */
+
 }
 
 

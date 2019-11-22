@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Router, RouterModule } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import * as $ from 'jquery';
 import {
   AngularFirestore,
@@ -11,13 +10,13 @@ import {
   AngularFirestoreDocument,
   fromDocRef
 } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Component({
   selector: 'app-topics',
   templateUrl: './topics.component.html',
   styleUrls: ['./topics.component.css']
 })
-
 
 export class TopicsComponent implements OnInit {
 
@@ -27,26 +26,16 @@ export class TopicsComponent implements OnInit {
     this.getTopics();
   }
   onSubmit() {
-  
-    var subreddit = $("#subreddit").val();
-
-    this.db.collection("subreddits").doc(subreddit).set({
-   
-    })
-      .then(function () {
-        console.log("Document successfully written!");
-        document.location.reload(true);
+    const subreddit = $('#subreddit').val();
+    this.db.collection('subreddits').doc(subreddit).set({})
+      .then(() => {
+        console.log('Document successfully written!');
+        document.location.reload();
       })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
+      .catch(err => {
+        console.error(err);
       });
   }
-
-//abaldwin
-  nav(subid: string) {
-    this.router.navigateByUrl(`/topics/${subid}/posts`);
-  }
-//=======
 
   async getTopics() {
     try {
@@ -56,15 +45,11 @@ export class TopicsComponent implements OnInit {
             console.log('No documents found');
           } else {
             coll.forEach(doc => {
-//abaldwin
               document.querySelector('#subreddits').innerHTML +=
-                // Commented link should work absolutely fine, but doesn't for some reason
-                // tslint:disable-next-line: max-line-length
-                // `<br><a style='color:#005ccc;cursor:pointer;text-decoration:underline' [routerLinkActive]='activeClass' class='nav-link' [routerLink]="['topics','${doc.id}','posts']"><h4>r/${doc.id}</h4></a></br>`;
+                // Commented line below should work absolutely fine, but doesn't for some reason
+                // `<br><a style='color:#005ccc;cursor:pointer;text-decoration:underline' [routerLinkActive]='activeClass'
+                // class='nav-link' [routerLink]="['topics','${doc.id}','posts']"><h4>r/${doc.id}</h4></a></br>`;
                 `<br><a href='topics/${doc.id}/posts'><h4>r/${doc.id}</h4></a></br>`;
-//=====
-              document.querySelector('#subreddits').innerHTML += `<br><h4><a href=/posts/${doc.id}>r/${doc.id}</a></h4></br>`;
-//master
               console.log(doc.id);
             });
           }
